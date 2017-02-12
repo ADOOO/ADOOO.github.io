@@ -394,6 +394,7 @@
 <p>值得注意的是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">content = re.sub(r&apos;&lt;[^&gt;]+&gt;&apos;, &apos;&apos;, contents[0])</div></pre></td></tr></table></figure></p>
 <p>这一行的作用是去掉所有的html标签（可以通用）</p>
 <h2 id="0x02获取数据"><a href="#0x02获取数据" class="headerlink" title="0x02获取数据"></a>0x02获取数据</h2><p>一共采集到795条信息，并存放入mysql数据库<br><img src="/images/zhilian_result_pic_1.png" alt="img"><br><img src="/images/zhilian_result_pic_2.png" alt="img"><br><img src="/images/zhilian_result_pic_3.png" alt="img"></p>
+<h2 id="0x03分析"><a href="#0x03分析" class="headerlink" title="0x03分析"></a>0x03分析</h2><p>本来想用python生成词云，但是网上有现成的Tools，而且效果很不错。<br>地址：<a href="https://timdream.org/wordcloud/" target="_blank" rel="external">https://timdream.org/wordcloud/</a><br>最终生成的关于就职地址的词云为：<br><img src="/images/zhilian_location_wordclound.png" alt="img"><br>可以明显的看到，北上广，杭州，深圳，南京等这些地区对岗位需求较高。<br>最终生成的关于岗能的词云为：<br><img src="/images/zhilian_job_wordclound.png" alt="img"><br>可以看出，岗位需要的能力主要包括：测试，经验，网络，系统，漏洞<br>对薪酬进行统计分析：<br><img src="/images/zhilian_wages.png" alt="img"><br>可以看出，薪酬在6k－9k的较多<br>在数据库中，统计需要python关键字的岗能需求：<br><img src="/images/zhilian_python.png" alt="img"><br>一共是198项，占24.9％</p>
 
           
         
