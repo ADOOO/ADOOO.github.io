@@ -380,23 +380,15 @@
       
         
           
-            <h2 id="为什么"><a href="#为什么" class="headerlink" title="为什么"></a>为什么</h2><p>在网上也陆陆续续搞了些Money了，但是基本都和老婆吃吃喝喝花掉了，一直也没花大钱给自己买东西。之前买过的vpn最贵，一年180多，后来加入了几个小秘圈，花了100多。然后就是买了云主机，也是点滴必争，又找又选，好几个月，找到了最便宜的买了，每月2刀。哦，突然想起来，买过一个机械键盘，180－190了，算是最贵的，/捂脸。</p>
-<p>最近有可能要发放两笔奖金，可能也许大概会有个2k，这次我想给自己置办一点心仪的装备。（其实内心是很纠结的，因为这些东西不是刚需，只有锦上添花的作用）</p>
-<h2 id="愿望清单"><a href="#愿望清单" class="headerlink" title="愿望清单"></a>愿望清单</h2><ul>
-<li><p>显示器</p>
-<p><a href="https://detail.tmall.com/item.htm?id=521894529530&amp;spm=a1z0k.6846577.1997525049.6.HNyyMM&amp;sku_properties=5919063:6536025" target="_blank" rel="external">AOC显示器24寸I2481FXH</a></p>
-<p><img src="http://ww4.sinaimg.cn/mw690/67fb8341jw1f7l7bsferfj20ku0ghgoa.jpg" alt="img"></p>
-<p>看着非常炫酷，我已经盯上它好久了。<br>价格：969</p>
-</li>
-<li><p>IPhone 电池<br>用了老婆的iPhone，但是电池已经损耗的厉害了，一直想换一个来着<br>预算300块吧</p>
-</li>
-<li><p>MAC 支架<br>感觉这种的不错：</p>
-<p><a href="https://detail.tmall.com/item.htm?spm=a230r.1.14.40.AclNeA&amp;id=522195990643&amp;ns=1&amp;abbucket=5" target="_blank" rel="external">酷奇MAC PRO touch bar苹果笔记本增高架</a></p>
-<p>就这些，不敢再列了</p>
-</li>
-</ul>
-
-          
+          为什么在网上也陆陆续续搞了些Money了，但是基本都和老婆吃吃喝喝花掉了，一直也没花大钱给自己买东西。之前买过的vpn最贵，一年180多，后来加入了几个小秘圈，花了100多。然后就是买了云主机，也是点滴必争，又找又选，好几个月，找到了最便宜的买了，每月2刀。哦，突然想起来，买过一个机械键盘，180－
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/15/添置装备愿望单/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -547,23 +539,21 @@
       
         
           
-            <h2 id="0x00-目标"><a href="#0x00-目标" class="headerlink" title="0x00 目标"></a>0x00 目标</h2><ul>
-<li>爬虫练习</li>
-<li>渗透测试职位岗能需求分析</li>
-<li>使用gevent模块，练习多线程</li>
-<li>如果有可能，使用数据库，对岗能进行大数据分析</li>
-</ul>
-<h2 id="0x01-开始工作"><a href="#0x01-开始工作" class="headerlink" title="0x01 开始工作"></a>0x01 开始工作</h2><p>智联招聘搜索关键字：渗透测试<br>地址：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://sou.zhaopin.com/jobs/searchresult.ashx?jl=%E8%BE%93%E5%85%A5%E9%80%89%E6%8B%A9%E5%9F%8E%E5%B8%82&amp;kw=%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95&amp;sm=0&amp;p=1</div></pre></td></tr></table></figure></p>
-<p>点击发现<code>p</code>参数控制页码，一共14页。</p>
-<p>可以使用Queue，制造这些数据put进去：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">def create():</div><div class="line">	queue = Queue()</div><div class="line">	for i in range(1,15):</div><div class="line">		queue.put(&apos;&apos;&apos;http://sou.zhaopin.com/jobs/searchresult.ashx?jl=\</div><div class="line">%E8%BE%93%E5%85%A5%E9%80%89%E6%8B%A9%E5%9F%8E%E5%B8%82&amp;kw=%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95&amp;sm=0&amp;p=&apos;&apos;&apos;+str(i))</div><div class="line">	return queue</div></pre></td></tr></table></figure></p>
-<p>接着，使用gevent，多线程的去把queue数据放入spider，让spider取url地址进行爬取和采集。<br>gevent部分：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">def main():</div><div class="line">	queue = create()</div><div class="line">	gevent_pool = []</div><div class="line">	thread_count = 5</div><div class="line">	for i in range(thread_count):</div><div class="line">		gevent_pool.append(gevent.spawn(spider,queue))</div><div class="line">	gevent.joinall(gevent_pool)</div></pre></td></tr></table></figure></p>
-<p>spider部分:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">def spider(queue):</div><div class="line">	while not queue.empty():</div><div class="line">		url = queue.get_nowait()</div><div class="line">		try:</div><div class="line">			r = requests.get(url)</div><div class="line">			soup = bs(r.content.replace(&apos;&lt;b&gt;&apos;,&apos;&apos;).replace(&apos;&lt;/b&gt;&apos;,&apos;&apos;), &apos;lxml&apos;)</div><div class="line">			jobs = soup.find_all(name=&apos;td&apos;, attrs=&#123;&apos;class&apos;:&apos;zwmc&apos;&#125;)</div><div class="line">			#job.div.a.string</div><div class="line">			companys = soup.find_all(name=&apos;td&apos;, attrs=&#123;&apos;class&apos;:&apos;gsmc&apos;&#125;)</div><div class="line">			#company.a.string</div><div class="line">			wages = soup.find_all(name=&apos;td&apos;, attrs=&#123;&apos;class&apos;:&apos;zwyx&apos;&#125;)</div><div class="line">			#wages.string</div><div class="line">			locations = soup.find_all(name=&apos;td&apos;, attrs=&#123;&apos;class&apos;:&apos;gzdd&apos;&#125;)</div><div class="line">			#location.string</div><div class="line">			for job,company,wage,location in zip(jobs,companys,wages,locations):</div><div class="line">				# print job.div.a.string,company.a.string,wage.string,location.string</div><div class="line">				j = job.div.a.string</div><div class="line">				c = company.a.string</div><div class="line">				w = wage.string</div><div class="line">				l = location.string</div><div class="line">				job_detail_url = job.div.a[&apos;href&apos;]</div><div class="line">				job_detail_req = requests.get(job_detail_url)</div><div class="line">				contents = re.findall(r&apos;SWSStringCutStart --&gt;(.*?)&lt;!-- SWSStringCutEnd&apos;, job_detail_req.content, re.S)</div><div class="line">				content = re.sub(r&apos;&lt;[^&gt;]+&gt;&apos;, &apos;&apos;, contents[0]).replace(&apos; &apos;,&apos;&apos;).replace(&apos;\r\n&apos;,&apos;&apos;).replace(&apos;&amp;nbsp;&apos;,&apos;&apos;)</div><div class="line">				print j,c,w,l</div><div class="line">				print content.decode(&apos;utf-8&apos;)</div><div class="line">				sqlin(j,c,w,l,content)</div><div class="line">		except Exception,e:</div><div class="line">			print e</div><div class="line">			pass</div></pre></td></tr></table></figure></p>
-<p>值得注意的是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">content = re.sub(r&apos;&lt;[^&gt;]+&gt;&apos;, &apos;&apos;, contents[0])</div></pre></td></tr></table></figure></p>
-<p>这一行的作用是去掉所有的html标签（可以通用）</p>
-<h2 id="0x02获取数据"><a href="#0x02获取数据" class="headerlink" title="0x02获取数据"></a>0x02获取数据</h2><p>一共采集到795条信息，并存放入mysql数据库<br><img src="/images/zhilian_result_pic_1.png" alt="img"><br><img src="/images/zhilian_result_pic_2.png" alt="img"><br><img src="/images/zhilian_result_pic_3.png" alt="img"></p>
-<h2 id="0x03分析"><a href="#0x03分析" class="headerlink" title="0x03分析"></a>0x03分析</h2><p>本来想用python生成词云，但是网上有现成的Tools，而且效果很不错。<br>地址：<a href="https://timdream.org/wordcloud/" target="_blank" rel="external">https://timdream.org/wordcloud/</a><br>最终生成的关于就职地址的词云为：<br><img src="/images/zhilian_location_wordclound.png" alt="img"><br>可以明显的看到，北上广，杭州，深圳，南京等这些地区对岗位需求较高。<br>最终生成的关于岗能的词云为：<br><img src="/images/zhilian_job_wordclound.png" alt="img"><br>可以看出，岗位需要的能力主要包括：测试，经验，网络，系统，漏洞<br>对薪酬进行统计分析：<br><img src="/images/zhilian_wages.png" alt="img"><br>可以看出，薪酬在6k－9k的较多<br>在数据库中，统计需要python关键字的岗能需求：<br><img src="/images/zhilian_python.png" alt="img"><br>一共是198项，占24.9％</p>
+          0x00 目标
+爬虫练习
+渗透测试职位岗能需求分析
+使用gevent模块，练习多线程
+如果有可能，使用数据库，对岗能进行大数据分析
 
-          
+0x01 开始工作智联招聘搜索关键字：渗透测试地址：1http://sou.zhaopin.com/jobs/searchresult.ashx?jl=%E8%BE%
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/10/智联招聘渗透测试岗位职能分析/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
