@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="工具," />
+  <meta name="keywords" content="渗透测试," />
 
 
 
@@ -87,19 +87,31 @@
 
 
 
-<meta name="description" content="0x00 Why we need it
-暴力破解不用多说，对于攻击和测试都是一项必不可少的内容。对于常见的协议的暴力破解和网站登录的暴力破解，如果有一个高质量的字典，会变的事半功倍。当然今天的主题不是这些。/笑今天我们要说的是关于手机验证码的暴力破解。手机验证码最初是4位的居多，使用BurpSuite即可完成破解工作，但目前而言，大多数的验证码基本都是6位，验证码的时效大概为3分钟左右，这样，使用">
+<meta name="description" content="0x00 IIS短文件名泄漏漏洞这个漏洞不做过多介绍了，漏洞详情和工具编写见：http://www.lijiejie.com/iis-win8-3-shortname-brute/。awvs判定为高危，国内的一些扫描器判定为中危。很多时候，在渗透测试的时候发现这个洞，也当鸡肋洞丢在一边，原因有两点：
+
+1、只能猜解前六位，以及扩展名的前3位；
+2、名称较短的文件是没有相应的短文件名的。
+
+0x01">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分布式暴力破解程序-1">
-<meta property="og:url" content="http://adooo.xyz/2017/02/16/分布式暴力破解程序-1/index.html">
+<meta property="og:title" content="从IIS短文件名泄漏漏洞，到服务器权限">
+<meta property="og:url" content="http://adooo.xyz/2017/06/07/从IIS短文件名泄漏漏洞，到服务器权限/index.html">
 <meta property="og:site_name" content="Become Master">
-<meta property="og:description" content="0x00 Why we need it
-暴力破解不用多说，对于攻击和测试都是一项必不可少的内容。对于常见的协议的暴力破解和网站登录的暴力破解，如果有一个高质量的字典，会变的事半功倍。当然今天的主题不是这些。/笑今天我们要说的是关于手机验证码的暴力破解。手机验证码最初是4位的居多，使用BurpSuite即可完成破解工作，但目前而言，大多数的验证码基本都是6位，验证码的时效大概为3分钟左右，这样，使用">
-<meta property="og:updated_time" content="2017-02-16T14:51:19.000Z">
+<meta property="og:description" content="0x00 IIS短文件名泄漏漏洞这个漏洞不做过多介绍了，漏洞详情和工具编写见：http://www.lijiejie.com/iis-win8-3-shortname-brute/。awvs判定为高危，国内的一些扫描器判定为中危。很多时候，在渗透测试的时候发现这个洞，也当鸡肋洞丢在一边，原因有两点：
+
+1、只能猜解前六位，以及扩展名的前3位；
+2、名称较短的文件是没有相应的短文件名的。
+
+0x01">
+<meta property="og:updated_time" content="2017-06-07T04:09:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分布式暴力破解程序-1">
-<meta name="twitter:description" content="0x00 Why we need it
-暴力破解不用多说，对于攻击和测试都是一项必不可少的内容。对于常见的协议的暴力破解和网站登录的暴力破解，如果有一个高质量的字典，会变的事半功倍。当然今天的主题不是这些。/笑今天我们要说的是关于手机验证码的暴力破解。手机验证码最初是4位的居多，使用BurpSuite即可完成破解工作，但目前而言，大多数的验证码基本都是6位，验证码的时效大概为3分钟左右，这样，使用">
+<meta name="twitter:title" content="从IIS短文件名泄漏漏洞，到服务器权限">
+<meta name="twitter:description" content="0x00 IIS短文件名泄漏漏洞这个漏洞不做过多介绍了，漏洞详情和工具编写见：http://www.lijiejie.com/iis-win8-3-shortname-brute/。awvs判定为高危，国内的一些扫描器判定为中危。很多时候，在渗透测试的时候发现这个洞，也当鸡肋洞丢在一边，原因有两点：
+
+1、只能猜解前六位，以及扩展名的前3位；
+2、名称较短的文件是没有相应的短文件名的。
+
+0x01">
 
 
 
@@ -127,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="http://adooo.xyz/2017/02/16/分布式暴力破解程序-1/"/>
+  <link rel="canonical" href="http://adooo.xyz/2017/06/07/从IIS短文件名泄漏漏洞，到服务器权限/"/>
 
 
 
 
 
-  <title> 分布式暴力破解程序-1 | Become Master </title>
+  <title> 从IIS短文件名泄漏漏洞，到服务器权限 | Become Master </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -270,7 +282,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://adooo.xyz/2017/02/16/分布式暴力破解程序-1/">
+  <link itemprop="mainEntityOfPage" href="http://adooo.xyz/2017/06/07/从IIS短文件名泄漏漏洞，到服务器权限/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="ADOOO">
@@ -294,7 +306,7 @@
             
             
               
-                分布式暴力破解程序-1
+                从IIS短文件名泄漏漏洞，到服务器权限
               
             
           </h1>
@@ -309,8 +321,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-16T22:33:06+08:00">
-                2017-02-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-07T11:19:10+08:00">
+                2017-06-07
               </time>
             
 
@@ -332,8 +344,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/编程/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
+                  <a href="/categories/渗透测试/" itemprop="url" rel="index">
+                    <span itemprop="name">渗透测试</span>
                   </a>
                 </span>
 
@@ -350,8 +362,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/16/分布式暴力破解程序-1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/16/分布式暴力破解程序-1/" itemprop="commentCount"></span>
+                <a href="/2017/06/07/从IIS短文件名泄漏漏洞，到服务器权限/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/07/从IIS短文件名泄漏漏洞，到服务器权限/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -377,14 +389,23 @@
       
 
       
-        <h2 id="0x00-Why-we-need-it"><a href="#0x00-Why-we-need-it" class="headerlink" title="0x00 Why we need it"></a>0x00 Why we need it</h2><blockquote>
-<p>暴力破解不用多说，对于攻击和测试都是一项必不可少的内容。对于常见的协议的暴力破解和网站登录的暴力破解，如果有一个高质量的字典，会变的事半功倍。当然今天的主题不是这些。/笑<br>今天我们要说的是关于手机验证码的暴力破解。手机验证码最初是4位的居多，使用BurpSuite即可完成破解工作，但目前而言，大多数的验证码基本都是6位，验证码的时效大概为3分钟左右，这样，使用BurpSuite很难完成这项任务。当我们手边有一些闲置的机器(webshell)，我们可以考虑利用这些机器，构造分布式的暴力破解程序，完成它。</p>
-</blockquote>
-<h2 id="0x01-How-we-do-it"><a href="#0x01-How-we-do-it" class="headerlink" title="0x01 How we do it"></a>0x01 How we do it</h2><ul>
-<li>选择Python作为编程语言，使用Celery作为分布式框架，因为需要部署一系列的环境，所以选择Docker环境。</li>
-<li>So We need：Docker -&gt; Celery -&gt; Python </li>
+        <h2 id="0x00-IIS短文件名泄漏漏洞"><a href="#0x00-IIS短文件名泄漏漏洞" class="headerlink" title="0x00 IIS短文件名泄漏漏洞"></a>0x00 IIS短文件名泄漏漏洞</h2><p>这个漏洞不做过多介绍了，漏洞详情和工具编写见：<a href="http://www.lijiejie.com/iis-win8-3-shortname-brute/。" target="_blank" rel="external">http://www.lijiejie.com/iis-win8-3-shortname-brute/。</a><br>awvs判定为高危，国内的一些扫描器判定为中危。很多时候，在渗透测试的时候发现这个洞，也当鸡肋洞丢在一边，原因有两点：</p>
+<ul>
+<li>1、只能猜解前六位，以及扩展名的前3位；</li>
+<li>2、名称较短的文件是没有相应的短文件名的。</li>
 </ul>
-<h1 id="思路和技能路线都有了，现在就要动手去做了！"><a href="#思路和技能路线都有了，现在就要动手去做了！" class="headerlink" title="思路和技能路线都有了，现在就要动手去做了！"></a>思路和技能路线都有了，现在就要动手去做了！</h1>
+<h2 id="0x01-漏洞攻击路线"><a href="#0x01-漏洞攻击路线" class="headerlink" title="0x01 漏洞攻击路线"></a>0x01 漏洞攻击路线</h2><p>其实这个漏洞还是有很多可利用的方式：</p>
+<ul>
+<li>1.猜解后台地址。</li>
+<li>2.猜解敏感文件，例如备份的rar、zip、.bak、.SQL文件等。</li>
+<li>3.在某些情形下，甚至可以通过短文件名web直接下载对应的文件。比如下载备份SQL文件。</li>
+<li>4.PS:如果一个backup-082119f75623eb7abd7bf357698ff66c.sql的长文件，其短文件是BACKUP~1.SQL，攻击者只需要提交BACKUP~1.SQL就可以直接访问该文件</li>
+</ul>
+<h2 id="0x02-漏洞攻击例子"><a href="#0x02-漏洞攻击例子" class="headerlink" title="0x02 漏洞攻击例子"></a>0x02 漏洞攻击例子</h2><p>这里举个例子，因为授权测试要保密，所以没有截图演示，只有文字描述说明<br>攻击路线的后两项可能较为少见，但是后台地址，尤其是一些不常见的地址，确实是可以猜解到的，可以这么做：<br>利用工具扫描，判断可能的后台地址，如：<code>Dir:  /adminl~1</code> 基本可以确定后台地址在adminlxxx的目录下。这时候，可以用BurpSuite，设置1-4位长度，跑一下（确实要比较长的时间），最后跑出的结果为<code>/adminlxxxx/</code>，这里就成功找到后台地址。<br>找到后台后，又多了几条攻击路线：暴力破解、登录SQl注入。<br>在测试中，暴力破解无结果，SQL注入不存在，貌似又陷入了僵局。<br>但是，不要忘记，我们还有IIS短文件名泄漏漏洞！<br>再次利用工具，扫描后台目录下的文件，发现了不少文件，通过猜解，获取文件真实名称。访问的时候，发现部分后台文件可以未授权访问，再通过经验，给这些文件加参数 <code>?id=1</code><br>当成功后，又能产生新的测试路线，未授权文件信息收集、SQL注入。<br>这里运气较好，发现了一个页面有文件上传，测试后可以上传任意文件，从而轻松的get webshell。<br>之后提权发现web权限很死，不能执行命令，然而查看了配置文件找到了数据库连接信息，因为是sqlserver，有很幸运的发现可以远程连接，连过去后，直接是system权限，至此，获取了服务器权限。</p>
+<p>当然，这里还有一条攻击线，在获取了webshell后，连到数据库，找到后台登录的账号、密码，从而登录后台。在后台会多出很多攻击线。经验告诉我，后台很可能有SQL注入漏洞，果然，发现某个地址是有注入，而且可以执行系统命令，是system权限，这样，也可以拿到服务器的最高权限。</p>
+<h2 id="0x03-总结"><a href="#0x03-总结" class="headerlink" title="0x03 总结"></a>0x03 总结</h2><p>每个漏洞都有利用的价值，这要看具体的场景，对于IIS的这个漏洞，其实危害还是蛮高的，由一个洞，能带出很多攻击线，势必，能成功的概率会比较高。<br>在后续提权的过程中，对于第二种提权的方法，也应该注意，虽然已经获得了webshell，很多时候我们会放弃去后台看一看的机会，将提权的关注点集中在webshell上，往往就钻进了死胡同。所以，对于可能的攻击路线，一定不要放弃，有的时候，要适当的放弃高权限，进入低权限，在低权限中寻求突破。<br>回过头来看这次测试，提醒自己，注意：adminlxxxx</p>
+<p>以上</p>
+
       
     </div>
 
@@ -423,7 +444,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/工具/" rel="tag"># 工具</a>
+            <a href="/tags/渗透测试/" rel="tag"># 渗透测试</a>
           
         </div>
       
@@ -436,8 +457,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/15/添置装备愿望单/" rel="next" title="添置装备愿望单">
-                <i class="fa fa-chevron-left"></i> 添置装备愿望单
+              <a href="/2017/06/07/Django-Study-Day-1/" rel="next" title="Django Study Day-1">
+                <i class="fa fa-chevron-left"></i> Django Study Day-1
               </a>
             
           </div>
@@ -445,10 +466,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/07/Django-Study-Day-1/" rel="prev" title="Django Study Day-1">
-                Django Study Day-1 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -474,8 +491,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/02/16/分布式暴力破解程序-1/"
-           data-title="分布式暴力破解程序-1" data-url="http://adooo.xyz/2017/02/16/分布式暴力破解程序-1/">
+      <div class="ds-thread" data-thread-key="2017/06/07/从IIS短文件名泄漏漏洞，到服务器权限/"
+           data-title="从IIS短文件名泄漏漏洞，到服务器权限" data-url="http://adooo.xyz/2017/06/07/从IIS短文件名泄漏漏洞，到服务器权限/">
       </div>
     
   </div>
@@ -595,7 +612,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00-Why-we-need-it"><span class="nav-text">0x00 Why we need it</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-How-we-do-it"><span class="nav-text">0x01 How we do it</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思路和技能路线都有了，现在就要动手去做了！"><span class="nav-text">思路和技能路线都有了，现在就要动手去做了！</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00-IIS短文件名泄漏漏洞"><span class="nav-text">0x00 IIS短文件名泄漏漏洞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-漏洞攻击路线"><span class="nav-text">0x01 漏洞攻击路线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-漏洞攻击例子"><span class="nav-text">0x02 漏洞攻击例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-总结"><span class="nav-text">0x03 总结</span></a></li></ol></div>
             
 
           </div>
