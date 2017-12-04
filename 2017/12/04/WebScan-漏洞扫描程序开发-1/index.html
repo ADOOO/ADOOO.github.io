@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="渗透测试," />
+  <meta name="keywords" content="工具," />
 
 
 
@@ -87,31 +87,25 @@
 
 
 
-<meta name="description" content="0x00 IIS短文件名泄漏漏洞这个漏洞不做过多介绍了，漏洞详情和工具编写见：http://www.lijiejie.com/iis-win8-3-shortname-brute/。awvs判定为高危，国内的一些扫描器判定为中危。很多时候，在渗透测试的时候发现这个洞，也当鸡肋洞丢在一边，原因有两点：
+<meta name="description" content="0x00 前言
+市面上有So Many扫描器，功能大同小异，在测试的过程中，无非就是这个工具用一下，那个工具试一试。最初想的是要把这么多工具整成工具包，就像好多年前一样“［xx工具包］”。后来随着测试环境的越来越繁杂，也随着测试手段和思路的不停变化，外加开发能力的提高，对开发一款自己的扫描器越来越迫切。
 
-1、只能猜解前六位，以及扩展名的前3位；
-2、名称较短的文件是没有相应的短文件名的。
-
-0x01">
+0x01 思路计划开发一款扫描器，大框架使用Python＋Django＋Mysql，主要功能">
 <meta property="og:type" content="article">
-<meta property="og:title" content="从IIS短文件名泄漏漏洞，到服务器权限">
-<meta property="og:url" content="http://adooo.xyz/2017/06/07/从IIS短文件名泄漏漏洞，到服务器权限/index.html">
+<meta property="og:title" content="WebScan-漏洞扫描程序开发-1">
+<meta property="og:url" content="http://adooo.xyz/2017/12/04/WebScan-漏洞扫描程序开发-1/index.html">
 <meta property="og:site_name" content="Become Master">
-<meta property="og:description" content="0x00 IIS短文件名泄漏漏洞这个漏洞不做过多介绍了，漏洞详情和工具编写见：http://www.lijiejie.com/iis-win8-3-shortname-brute/。awvs判定为高危，国内的一些扫描器判定为中危。很多时候，在渗透测试的时候发现这个洞，也当鸡肋洞丢在一边，原因有两点：
+<meta property="og:description" content="0x00 前言
+市面上有So Many扫描器，功能大同小异，在测试的过程中，无非就是这个工具用一下，那个工具试一试。最初想的是要把这么多工具整成工具包，就像好多年前一样“［xx工具包］”。后来随着测试环境的越来越繁杂，也随着测试手段和思路的不停变化，外加开发能力的提高，对开发一款自己的扫描器越来越迫切。
 
-1、只能猜解前六位，以及扩展名的前3位；
-2、名称较短的文件是没有相应的短文件名的。
-
-0x01">
-<meta property="og:updated_time" content="2017-06-07T04:09:26.000Z">
+0x01 思路计划开发一款扫描器，大框架使用Python＋Django＋Mysql，主要功能">
+<meta property="og:updated_time" content="2017-12-04T07:05:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="从IIS短文件名泄漏漏洞，到服务器权限">
-<meta name="twitter:description" content="0x00 IIS短文件名泄漏漏洞这个漏洞不做过多介绍了，漏洞详情和工具编写见：http://www.lijiejie.com/iis-win8-3-shortname-brute/。awvs判定为高危，国内的一些扫描器判定为中危。很多时候，在渗透测试的时候发现这个洞，也当鸡肋洞丢在一边，原因有两点：
+<meta name="twitter:title" content="WebScan-漏洞扫描程序开发-1">
+<meta name="twitter:description" content="0x00 前言
+市面上有So Many扫描器，功能大同小异，在测试的过程中，无非就是这个工具用一下，那个工具试一试。最初想的是要把这么多工具整成工具包，就像好多年前一样“［xx工具包］”。后来随着测试环境的越来越繁杂，也随着测试手段和思路的不停变化，外加开发能力的提高，对开发一款自己的扫描器越来越迫切。
 
-1、只能猜解前六位，以及扩展名的前3位；
-2、名称较短的文件是没有相应的短文件名的。
-
-0x01">
+0x01 思路计划开发一款扫描器，大框架使用Python＋Django＋Mysql，主要功能">
 
 
 
@@ -139,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://adooo.xyz/2017/06/07/从IIS短文件名泄漏漏洞，到服务器权限/"/>
+  <link rel="canonical" href="http://adooo.xyz/2017/12/04/WebScan-漏洞扫描程序开发-1/"/>
 
 
 
 
 
-  <title> 从IIS短文件名泄漏漏洞，到服务器权限 | Become Master </title>
+  <title> WebScan-漏洞扫描程序开发-1 | Become Master </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -282,7 +276,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://adooo.xyz/2017/06/07/从IIS短文件名泄漏漏洞，到服务器权限/">
+  <link itemprop="mainEntityOfPage" href="http://adooo.xyz/2017/12/04/WebScan-漏洞扫描程序开发-1/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="ADOOO">
@@ -306,7 +300,7 @@
             
             
               
-                从IIS短文件名泄漏漏洞，到服务器权限
+                WebScan-漏洞扫描程序开发-1
               
             
           </h1>
@@ -321,8 +315,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-07T11:19:10+08:00">
-                2017-06-07
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-04T14:40:31+08:00">
+                2017-12-04
               </time>
             
 
@@ -344,8 +338,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/渗透测试/" itemprop="url" rel="index">
-                    <span itemprop="name">渗透测试</span>
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
                   </a>
                 </span>
 
@@ -362,8 +356,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/07/从IIS短文件名泄漏漏洞，到服务器权限/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/07/从IIS短文件名泄漏漏洞，到服务器权限/" itemprop="commentCount"></span>
+                <a href="/2017/12/04/WebScan-漏洞扫描程序开发-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/12/04/WebScan-漏洞扫描程序开发-1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -389,22 +383,47 @@
       
 
       
-        <h2 id="0x00-IIS短文件名泄漏漏洞"><a href="#0x00-IIS短文件名泄漏漏洞" class="headerlink" title="0x00 IIS短文件名泄漏漏洞"></a>0x00 IIS短文件名泄漏漏洞</h2><p>这个漏洞不做过多介绍了，漏洞详情和工具编写见：<a href="http://www.lijiejie.com/iis-win8-3-shortname-brute/。" target="_blank" rel="external">http://www.lijiejie.com/iis-win8-3-shortname-brute/。</a><br>awvs判定为高危，国内的一些扫描器判定为中危。很多时候，在渗透测试的时候发现这个洞，也当鸡肋洞丢在一边，原因有两点：</p>
+        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><blockquote>
+<p>市面上有So Many扫描器，功能大同小异，在测试的过程中，无非就是这个工具用一下，那个工具试一试。最初想的是要把这么多工具整成工具包，就像好多年前一样“［xx工具包］”。后来随着测试环境的越来越繁杂，也随着测试手段和思路的不停变化，外加开发能力的提高，对开发一款自己的扫描器越来越迫切。</p>
+</blockquote>
+<h2 id="0x01-思路"><a href="#0x01-思路" class="headerlink" title="0x01 思路"></a>0x01 思路</h2><p>计划开发一款扫描器，大框架使用Python＋Django＋Mysql，主要功能包括：</p>
 <ul>
-<li>1、只能猜解前六位，以及扩展名的前3位；</li>
-<li>2、名称较短的文件是没有相应的短文件名的。</li>
+<li><ol>
+<li>信息收集：端口、指纹、字域名等</li>
+</ol>
+</li>
+<li><ol>
+<li>扫描：基于插件的扫描，包括：目录、敏感文件等、SQL注入等、常见漏洞等</li>
+</ol>
+</li>
+<li><ol>
+<li>还没想好</li>
+</ol>
+</li>
 </ul>
-<h2 id="0x01-漏洞攻击路线"><a href="#0x01-漏洞攻击路线" class="headerlink" title="0x01 漏洞攻击路线"></a>0x01 漏洞攻击路线</h2><p>其实这个漏洞还是有很多可利用的方式：</p>
+<blockquote>
+<p>是否会用到国内开源的漏洞扫描程序，如：PocSuite、TangScan、BugScan，看情况咯</p>
+</blockquote>
+<p>剩下的思路，逐渐完善吧</p>
+<h2 id="0x02-近期TODO"><a href="#0x02-近期TODO" class="headerlink" title="0x02 近期TODO"></a>0x02 近期TODO</h2><p>前期仍旧以设计为主，主要要解决的问题为以下几点：</p>
 <ul>
-<li>1.猜解后台地址。</li>
-<li>2.猜解敏感文件，例如备份的rar、zip、.bak、.SQL文件等。</li>
-<li>3.在某些情形下，甚至可以通过短文件名web直接下载对应的文件。比如下载备份SQL文件。</li>
-<li>4.PS:如果一个backup-082119f75623eb7abd7bf357698ff66c.sql的长文件，其短文件是BACKUP~1.SQL，攻击者只需要提交BACKUP~1.SQL就可以直接访问该文件</li>
+<li><ol>
+<li>要不要使用Python3？</li>
+</ol>
+</li>
+<li><ol>
+<li>使用Django把基本框架搭起来</li>
+</ol>
+</li>
+<li><ol>
+<li>如何以插件的形式进行扫描，设计新的架构？或是采用现有的方式？</li>
+</ol>
+</li>
+<li><ol>
+<li>还没想好</li>
+</ol>
+</li>
 </ul>
-<h2 id="0x02-漏洞攻击例子"><a href="#0x02-漏洞攻击例子" class="headerlink" title="0x02 漏洞攻击例子"></a>0x02 漏洞攻击例子</h2><p>这里举个例子，因为授权测试要保密，所以没有截图演示，只有文字描述说明<br>攻击路线的后两项可能较为少见，但是后台地址，尤其是一些不常见的地址，确实是可以猜解到的，可以这么做：<br>利用工具扫描，判断可能的后台地址，如：<code>Dir:  /adminl~1</code> 基本可以确定后台地址在adminlxxx的目录下。这时候，可以用BurpSuite，设置1-4位长度，跑一下（确实要比较长的时间），最后跑出的结果为<code>/adminlxxxx/</code>，这里就成功找到后台地址。<br>找到后台后，又多了几条攻击路线：暴力破解、登录SQl注入。<br>在测试中，暴力破解无结果，SQL注入不存在，貌似又陷入了僵局。<br>但是，不要忘记，我们还有IIS短文件名泄漏漏洞！<br>再次利用工具，扫描后台目录下的文件，发现了不少文件，通过猜解，获取文件真实名称。访问的时候，发现部分后台文件可以未授权访问，再通过经验，给这些文件加参数 <code>?id=1</code><br>当成功后，又能产生新的测试路线，未授权文件信息收集、SQL注入。<br>这里运气较好，发现了一个页面有文件上传，测试后可以上传任意文件，从而轻松的get webshell。<br>之后提权发现web权限很死，不能执行命令，然而查看了配置文件找到了数据库连接信息，因为是sqlserver，有很幸运的发现可以远程连接，连过去后，直接是system权限，至此，获取了服务器权限。</p>
-<p>当然，这里还有一条攻击线，在获取了webshell后，连到数据库，找到后台登录的账号、密码，从而登录后台。在后台会多出很多攻击线。经验告诉我，后台很可能有SQL注入漏洞，果然，发现某个地址是有注入，而且可以执行系统命令，是system权限，这样，也可以拿到服务器的最高权限。</p>
-<h2 id="0x03-总结"><a href="#0x03-总结" class="headerlink" title="0x03 总结"></a>0x03 总结</h2><p>每个漏洞都有利用的价值，这要看具体的场景，对于IIS的这个漏洞，其实危害还是蛮高的，由一个洞，能带出很多攻击线，势必，能成功的概率会比较高。<br>在后续提权的过程中，对于第二种提权的方法，也应该注意，虽然已经获得了webshell，很多时候我们会放弃去后台看一看的机会，将提权的关注点集中在webshell上，往往就钻进了死胡同。所以，对于可能的攻击路线，一定不要放弃，有的时候，要适当的放弃高权限，进入低权限，在低权限中寻求突破。<br>回过头来看这次测试，提醒自己，注意：adminlxxxx</p>
-<p>以上</p>
 
       
     </div>
@@ -444,7 +463,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/渗透测试/" rel="tag"># 渗透测试</a>
+            <a href="/tags/工具/" rel="tag"># 工具</a>
           
         </div>
       
@@ -457,8 +476,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/07/Django-Study-Day-1/" rel="next" title="Django Study Day-1">
-                <i class="fa fa-chevron-left"></i> Django Study Day-1
+              <a href="/2017/06/26/Mac下修改Apache服务路径/" rel="next" title="Mac下修改Apache服务路径">
+                <i class="fa fa-chevron-left"></i> Mac下修改Apache服务路径
               </a>
             
           </div>
@@ -466,10 +485,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/08/Django-Study-Day-2/" rel="prev" title="Django Study Day-2">
-                Django Study Day-2 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -495,8 +510,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/06/07/从IIS短文件名泄漏漏洞，到服务器权限/"
-           data-title="从IIS短文件名泄漏漏洞，到服务器权限" data-url="http://adooo.xyz/2017/06/07/从IIS短文件名泄漏漏洞，到服务器权限/">
+      <div class="ds-thread" data-thread-key="2017/12/04/WebScan-漏洞扫描程序开发-1/"
+           data-title="WebScan-漏洞扫描程序开发-1" data-url="http://adooo.xyz/2017/12/04/WebScan-漏洞扫描程序开发-1/">
       </div>
     
   </div>
@@ -616,7 +631,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00-IIS短文件名泄漏漏洞"><span class="nav-text">0x00 IIS短文件名泄漏漏洞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-漏洞攻击路线"><span class="nav-text">0x01 漏洞攻击路线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-漏洞攻击例子"><span class="nav-text">0x02 漏洞攻击例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-总结"><span class="nav-text">0x03 总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00-前言"><span class="nav-text">0x00 前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-思路"><span class="nav-text">0x01 思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-近期TODO"><span class="nav-text">0x02 近期TODO</span></a></li></ol></div>
             
 
           </div>
